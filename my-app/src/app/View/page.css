@@ -1,0 +1,153 @@
+
+.view-section {
+  width: 100%;
+  padding: 100px 8%;
+  background: #f8f9fc;
+  box-sizing: border-box;
+}
+
+/* Header */
+
+.view-header {
+  max-width: 750px;
+  margin: 0 auto 70px;
+  text-align: center;
+}
+
+.view-tag {
+  display: inline-block;
+  color: #e63946;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.view-header h1 {
+  color: #111827;
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 800;
+  margin: 0 0 20px;
+  letter-spacing: -2px;
+}
+
+.view-header h1 span {
+  color: #e63946;
+}
+
+.view-header p {
+  color: #6b7280;
+  font-size: 17px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Questions container */
+
+.questions-container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+/* Question card */
+
+.question-card {
+  display: flex;
+  gap: 25px;
+  padding: 35px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.question-card:hover {
+  transform: translateY(-6px);
+  border-color: #e63946;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07);
+}
+
+/* Number */
+
+.question-number {
+  color: #e63946;
+  font-size: 27px;
+  font-weight: 800;
+  min-width: 45px;
+}
+
+/* Content */
+
+.question-content h2 {
+  color: #111827;
+  font-size: 22px;
+  margin: 0 0 15px;
+  line-height: 1.4;
+}
+
+.question-content p {
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 0 0 22px;
+}
+
+/* Link */
+
+.question-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #e63946;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: gap 0.3s ease;
+}
+
+.question-link:hover {
+  gap: 16px;
+}
+
+/* Responsive design */
+
+@media (max-width: 768px) {
+  .view-section {
+    padding: 70px 5%;
+  }
+
+  .view-header {
+    margin-bottom: 45px;
+  }
+
+  .questions-container {
+    grid-template-columns: 1fr;
+  }
+
+  .question-card {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .question-card {
+    gap: 15px;
+    padding: 22px 18px;
+  }
+
+  .question-number {
+    font-size: 22px;
+    min-width: 35px;
+  }
+
+  .question-content h2 {
+    font-size: 19px;
+  }
+
+  .question-content p {
+    font-size: 14px;
+  }
+}

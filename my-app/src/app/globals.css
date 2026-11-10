@@ -1,0 +1,21 @@
+@import "tailwindcss";
+body {
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.home {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+html {
+  scroll-behavior: smooth;
+}
+
