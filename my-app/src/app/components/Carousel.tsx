@@ -4,6 +4,8 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import "../image/page.css";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 interface Slide {
   id: number;
   title: string;
@@ -16,19 +18,19 @@ const slides: Slide[] = [
     id: 1,
     title: " Browse with No number .",
     description: "Open any of the six projcts.Price band ,stages and area are right there.No from appears bedore the faces do.",
-    image: "/images/property1.png",
+    image: `${basePath}/images/property1.png`,
   },
   {
     id: 2,
     title: "Put two or there .Price ,stage and type line up on your screen.Nothing is sent to a builder.",
     description: "Six Bengaluru,with the price on the card .Compare them here.No phone number,No call back and nothing passed to a builder.",
-    image: "/images/property2.png",
+    image: `${basePath}/images/property2.png`,
   },
   {
     id: 3,
     title: "Find a home before you share a number ",
     description: "Six Bengaluru , with the price on the card .Compare them here. No phone number, no call back and nothing passed to a builder.",
-    image: "/images/property3.png",
+    image: `${basePath}/images/property3.png`,
   },
 ];
 
