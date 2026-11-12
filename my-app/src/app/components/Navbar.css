@@ -1,6 +1,8 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* Top Navbar */
@@ -11,11 +13,14 @@
   width: 100%;
   height: 36px;
   padding: 0 8%;
+
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background: #100d0f;
-  color: #ffffff;
+
+  background: black;
+  color: white;
+
   z-index: 1002;
 }
 
@@ -27,7 +32,7 @@
 }
 
 .top-navbar-content a {
-  color: #d6d1d1;
+  color: red;
   text-decoration: none;
   transition: color 0.3s;
 }
@@ -46,21 +51,18 @@
 .navbar {
   position: sticky;
   top: 36px;
+
   width: 100%;
   height: 75px;
   padding: 0 8%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  background: linear-gradient(
-    90deg,
-    #171316 0%,
-    #29151b 50%,
-    #8f1729 100%
-  );
+  background-color: white;
+  color: black;
 
-  color: #ffffff;
   z-index: 1001;
 }
 
@@ -70,9 +72,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
+
   font-size: 26px;
   font-weight: 700;
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
@@ -81,9 +84,11 @@
   width: 35px;
   height: 35px;
   border-radius: 10px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   font-size: 20px;
 }
 
@@ -96,7 +101,7 @@
 }
 
 .nav-links a {
-  color: white;
+  color: black;
   text-decoration: none;
   font-size: 16px;
   transition: color 0.3s;
@@ -112,12 +117,16 @@
 .get-app-btn,
 .mobile-get-app {
   padding: 10px 18px;
+
   border: 1px solid #ff354b;
   border-radius: 6px;
+
   background: #ff354b;
-  color: #ffffff;
+  color: black;
+
   font-weight: 600;
   text-decoration: none;
+
   transition: background-color 0.3s, border-color 0.3s;
 }
 
@@ -135,52 +144,72 @@
 
 .menu-btn {
   display: none;
+
   background: transparent;
-  color: white;
+  color: brown;
+
   border: none;
   font-size: 28px;
+
   cursor: pointer;
 }
 
 /* Mobile Responsive */
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
+
+  /* Top Navbar */
+
   .top-navbar {
     padding: 0 5%;
   }
 
   .top-navbar-content {
-    gap: 14px;
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 12px;
   }
+
+  /* Main Navbar */
 
   .navbar {
     padding: 0 5%;
+    height: 75px;
   }
 
   .get-app-btn {
     display: none;
   }
 
+  /* Show Menu Icon */
+
   .menu-btn {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
+
+  /* Mobile Dropdown Menu */
 
   .nav-links {
     display: none;
+
     position: absolute;
     top: 100%;
     left: 0;
+
     width: 100%;
     padding: 25px;
-    background: linear-gradient(
-      90deg,
-      #171316 0%,
-      #29151b 50%,
-      #8f1729 100%
-    );
+
+    background-color: white;
+
     flex-direction: column;
+    align-items: center;
     gap: 25px;
+
     z-index: 1003;
+
     box-shadow: 0 8px 14px rgb(0 0 0 / 20%);
   }
 
@@ -188,16 +217,13 @@
     display: flex;
   }
 
+  .nav-links a {
+    font-size: 16px;
+  }
+
+  /* Mobile Get App */
+
   .mobile-get-app {
     display: inline-block;
-  }
-}
-
-@media (max-width:800px) {
-  .top-navbar-content {
-    width: 100%;
-    justify-content: space-between;
-    gap: 8px;
-    font-size: 12px;
   }
 }

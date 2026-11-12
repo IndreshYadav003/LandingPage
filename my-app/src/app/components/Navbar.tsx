@@ -15,7 +15,7 @@ const Navbar = () => {
     { name: "New Launches", path: "/NewLaunches" },
     { name: "How it's different", path: "/Different" },
     { name: "A clearer view", path: "/View" },
-    { name: "Professional", path: "/Propessional" },
+    
   ];
 
   return (

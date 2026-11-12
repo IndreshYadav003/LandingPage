@@ -1,10 +1,5 @@
-// export default function Page() {
-//   return (
-//     <>first</>
-//   )
-// }
 
-import "./page.css";
+import styles from "./page.module.css";
 
 // 1. Define TypeScript type
 type Property = {
@@ -93,53 +88,56 @@ export default function Page() {
 
   // 3. Return JSX
   return (
-    <section className="property-section">
+    <section className={styles.propertySection}>
 
-      <div className="property-heading">
-        <span>OUR PROPERTIES</span>
+      <div className={styles.propertyHeading}>
+        <span>HANDPICKED</span>
         <h1>Featured Projects</h1>
-        <p>Price ,plase and stage , before anyone has your number</p>
+        <p>The price is on the card. Four of these are marked design samples.</p>
       </div>
 
-      <div className="property-grid">
+      <div className={styles.propertyGrid}>
 
         {properties.map((property) => (
-          <div className="property-card" key={property.id}>
+          <div className={styles.propertyCard} key={property.id}>
 
-            <div className="property-image">
+            <div className={styles.propertyImage}>
               <img
                 src={property.image}
                 alt={property.title}
               />
 
-              <span className="property-type">
+              <span className={styles.propertyType}>
                 {property.propertyType}
               </span>
 
-              <span className="property-status">
+              <span className={styles.propertyStatus}>
                 {property.status}
               </span>
             </div>
 
-            <div className="property-content">
+            <div className={styles.propertyContent}>
 
-              <h2>{property.title}</h2>
-
-              <p className="location">
+              <p className={styles.location}>
                 📍 {property.location}
               </p>
-
+             <h2>{property.title}</h2>
               <h3>
-                ₹{property.price.toLocaleString("en-IN")}
-              </h3>
+  ₹{(property.price < 10000000 
+    ? property.price / 100000 
+    : property.price / 10000000
+  ).toLocaleString('en-IN', { maximumFractionDigits: 2 })}{' '}
+  {property.price < 10000000 ? 'Lakhs' : 'Crores'}
+</h3>
 
-              <div className="property-details">
+
+              <div className={styles.propertyDetails}>
                 <span>🛏 {property.bedrooms} Beds</span>
                 <span>🚿 {property.bathrooms} Baths</span>
                 <span>📐 {property.area} Sq.ft</span>
               </div>
 
-              <button className="view-btn">
+              <button className={styles.viewButton}>
                 View Details →
               </button>
 
