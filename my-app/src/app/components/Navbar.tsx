@@ -23,10 +23,9 @@ const Navbar = () => {
       {/* Upper Navbar */}
       <div className="top-navbar">
         <div className="top-navbar-content">
-          <Link href="/privacy">Privacy</Link>
           <span>No phone number on this site</span>
-          <Link href="/app" className="top-get-app">
-            Get the app
+          <Link href="/propertySearch" className="top-get-app">
+            Get App
           </Link>
         </div>
       </div>
@@ -57,17 +56,17 @@ const Navbar = () => {
 
           {/* Mobile Get App Button */}
           <Link
-            href="/app"
+            href="/propertySearch"
             className="mobile-get-app"
             onClick={() => setMenuOpen(false)}
           >
-            Get the app
+            Get App
           </Link>
         </div>
 
         {/* Desktop Get App Button */}
-        <Link href="/app" className="get-app-btn">
-          Get the app
+        <Link href="/propertySearch" className="get-app-btn">
+          Get App
         </Link>
 
         {/* Mobile Menu */}

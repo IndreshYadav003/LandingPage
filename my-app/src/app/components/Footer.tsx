@@ -29,7 +29,7 @@ export default function Footer() {
             opportunities and make better property decisions.
           </p>
 
-          <Link href="/properties" className="footer-cta">
+          <Link href="/propertySearch" className="footer-cta">
             Explore Properties <span>↗</span>
           </Link>
         </div>
@@ -37,28 +37,17 @@ export default function Footer() {
         {/* Explore Links */}
         <div className="footer-column">
           <h3>Explore</h3>
-          <Link href="/properties">All Properties</Link>
-          <Link href="/properties">Buy Property</Link>
-      
-          <Link href="/dashboard">Property Reports</Link>
+          <Link href="/propertySearch">All Properties</Link>
+          <Link href="/propertySearch">Buy Property</Link>
+          <Link href="/NewLaunches">New Launches</Link>
+          <Link href="/Projects">Projects</Link>
         </div>
 
-        {/* Company Links */}
+        {/* More to explore */}
         <div className="footer-column">
-          <h3>Company</h3>
-          <Link href="/about">About Us</Link>
-          <Link href="/contact">Contact Us</Link>
-          <Link href="/projects">Our Projects</Link>
-          <Link href="/dashboard">Dashboard</Link>
-        </div>
-
-        {/* Support Links */}
-        <div className="footer-column">
-          <h3>Support</h3>
-          <Link href="/contact">Help Center</Link>
-          <Link href="/contact">Get In Touch</Link>
-          <Link href="/privacy-policy">Privacy Policy</Link>
-          <Link href="/terms">Terms & Conditions</Link>
+          <h3>Discover</h3>
+          <Link href="/Different">How it&apos;s different</Link>
+          <Link href="/View">A clearer view</Link>
         </div>
 
       </div>

@@ -8,29 +8,29 @@ export default function ViewPage() {
       number: "01",
       title: "Is the price fair",
       description:" The band ,set against prices in the same pocket on the city.",
-       link: "Buy a report in the app",
-      href: "/dashboard",
+      link: "Browse current prices",
+      href: "/propertySearch",
     },
     {
       number: "02",
       title: "Does the location work every dat? ",
       description:"Commute , schools and errands from the address ,not from a brochure map"
-        , link: "Open the map in the app",
-      href: "/dashboard",
+        , link: "Search by location",
+      href: "/propertySearch",
     },
     {
       number: "03",
       title: "What does the Brochure leave out ?",
       description:" Charges, clauses and timelines,written in the plain lines"
-        , link: "Read the details sheet in the app",
-      href: "/dashboard",
+        , link: "Explore current projects",
+      href: "/Projects",
     },
     {
       number: "04",
       title: "What does locking a price do ?",
       description:"It hold the number you saw for a window you choose ,while you decide"
-      ,  link: "Lock the price in the app",
-      href: "/dashboard",
+      ,  link: "Browse new launches",
+      href: "/NewLaunches",
     },
   ];
 

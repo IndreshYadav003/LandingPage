@@ -1,4 +1,3 @@
-
 import styles from "./page.module.css";
 
 // 1. Define TypeScript type
@@ -152,48 +151,3 @@ export default function Page() {
   );
 }
 
-
-// "use client";
-
-// import axios from "axios";
-// import { useEffect, useState } from "react";
-
-// export default function Page() {
-//   const [properties, setProperties] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     const getProperties = async () => {
-//       try {
-//         const response = await axios.get(
-//           "https://databasesample.com/mock/property-listings/properties"
-//         );
-
-//         setProperties(response.data);
-//       } catch (error) {
-//         console.error("API Error:", error);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     getProperties();
-//   }, []);
-
-//   if (loading) return <h2>Loading...</h2>;
-
-//   return (
-//     <div>
-//       {properties.map((property) => (
-//         <div key={property.id} style={{borderBlockStartWidth:"4px",
-//         backgroundColor:"lightgray",display:"block",textJustify:"center",
-//         }} >
-//           <h2>{property.address}</h2>
-//           <p>{property.property_type}</p>
-//           <p>Bedrooms: {property.bedrooms}</p>
-//           <p>Bathrooms: {property.bathrooms}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }

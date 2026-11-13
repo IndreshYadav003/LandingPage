@@ -9,19 +9,34 @@
   width: 100%;
   min-height: 650px;
   height: calc(100vh - 105px);
-  max-height: 850px;
+  max-height: 80px;
   position: relative;
   overflow: hidden;
 
   display: flex;
   align-items: center;
-
+/*
   background: radial-gradient(
     ellipse at 75% 75%,
-    #25151d,
-    #160c11 55%,
-    #10090d
+    #100f10,
+    #16100c 55%,
+    #ca0606
   );
+*/
+/*Dark Luxury Red
+ background: linear-gradient(
+  110deg,
+  #090909 0%,
+  #350D13 50%,
+  #9B111E 100%
+);*/
+/* Premium burgundy*/
+background: linear-gradient(
+  110deg,
+  #170B0D,
+  #54121C 50%,
+  #A52A35 100%
+);
 
   color: white;
   font-family: Arial, sans-serif;
@@ -38,7 +53,7 @@
 
 .carousel-label {
   color: #f18496;
-  font-size: 16px;
+  font-size: 25px;
   font-weight: 700;
   letter-spacing: 3px;
   margin-bottom: 25px;
@@ -46,7 +61,7 @@
 
 .carousel-left h1 {
   font-family: Georgia, serif;
-  font-size: clamp(45px, 5vw, 78px);
+  font-size: clamp(20px, 5vw, 30px);
   line-height: 1.15;
   font-weight: 400;
   margin-bottom: 18px;

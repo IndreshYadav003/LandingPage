@@ -3,23 +3,24 @@
 
 import { useEffect, useState } from "react";
 import "./page.css";
+import Page from "../propertySearch/page";
 
 const slides = [
   {
     number: "01",
     label: "LOOK",
-    heading: "Browse with",
-    highlight: "no number.",
+    heading: "Explore with",
+    highlight: "private ID.",
     description:
-      "Open any of the six projects. Price band, stage and area are right there. No form appears before the facts do.",
+      "Explore projects and connect with developers securely using your private ID, not your phone number.",
   },
   {
     number: "02",
-    label: "COMPARE",
+    label: "COMPARE WITH AI",
     heading: "Put them",
     highlight: "side by side.",
     description:
-      "Pick two or three. Price, stage and type line up on your screen. Nothing is sent to a builder.",
+      "Get a clear picture before you invest. Compare projects, understand costs and risks, and make smarter decisions with a report.",
   },
   {
     number: "03",
@@ -27,7 +28,7 @@ const slides = [
     heading: "Hold the price",
     highlight: "you saw.",
     description:
-      "In the app, lock today's price while you decide. Your number stays optional and is never passed on.",
+      "Lock today's price in the app and decide later, without sharing your phone number.",
   },
 ];
 
@@ -53,131 +54,143 @@ export default function ProfessionalPage() {
   const slide = slides[active];
 
   return (
-    <section className="carousel-section">
+    <main className="professional-page">
 
-      {/* LEFT CONTENT */}
-      <div className="carousel-left" key={active}>
-        <p className="carousel-label">
-          {slide.number} · {slide.label}
-        </p>
+      {/* HERO SECTION */}
+      <section className="carousel-section">
 
-        <h1>
-          {slide.heading}{" "}
-          <span>{slide.highlight}</span>
-        </h1>
+        {/* LEFT CONTENT */}
+        <div className="carousel-left">
+          <p className="carousel-label">
+            {slide.number} · {slide.label}
+          </p>
 
-        <p className="carousel-description">
-          {slide.description}
-        </p>
+          <h1>
+            {slide.heading}{" "}
+            <span>{slide.highlight}</span>
+          </h1>
 
-        {/* SLIDER INDICATORS */}
-        <div className="carousel-indicators">
-          {slides.map((item, index) => (
-            <button
-              key={item.number}
-              onClick={() => setActive(index)}
-              className={active === index ? "active" : ""}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
+          <p className="carousel-description">
+            {slide.description}
+          </p>
+
+          {/* SLIDER INDICATORS */}
+          <div className="carousel-indicators">
+            {slides.map((item, index) => (
+              <button
+                key={item.number}
+                onClick={() => setActive(index)}
+                className={active === index ? "active" : ""}
+                aria-label={`Go to slide ${index + 1}`}
+                aria-current={active === index ? "true" : undefined}
+              />
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* RIGHT PHONE MOCKUP */}
-      <div className="carousel-right" key={`phone-${active}`}>
-        <div className="phone">
-          <div className="phone-screen">
-            <div className="phone-notch" />
+        {/* RIGHT PHONE MOCKUP */}
+        <div className="carousel-right">
+          <div className="phone">
+            <div className="phone-screen">
+              <div className="phone-notch" />
 
-            {active === 0 && (
-              <div className="phone-content">
-                <h3>Open projects</h3>
-                <p className="phone-subtitle">
-                  Bengaluru · 6 open, no sign-up
-                </p>
+              {active === 0 && (
+                <div className="phone-content">
+                  <h3>Open projects</h3>
+                  <p className="phone-subtitle">
+                    Bengaluru · 6 open, no sign-up
+                  </p>
 
-                {projects.map((project, index) => (
-                  <div className="project-card" key={project.name}>
-                    <div className={`project-image image-${index}`}>
-                      <span>{index + 1}</span>
-                    </div>
+                  {projects.map((project, index) => (
+                    <div className="project-card" key={project.name}>
+                      <div className={`project-image image-${index}`}>
+                        <span>{index + 1}</span>
+                      </div>
 
-                    <div className="project-info">
-                      <strong>{project.name}</strong>
-                      <p>{project.location}</p>
-                    </div>
+                      <div className="project-info">
+                        <strong>{project.name}</strong>
+                        <p>{project.location}</p>
+                      </div>
 
-                    <b>{project.price}</b>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {active === 1 && (
-              <div className="phone-content">
-                <h3>Compare</h3>
-                <p className="phone-subtitle">
-                  On your phone only
-                </p>
-
-                <div className="compare-table">
-                  <div className="compare-row">
-                    <span />
-                    <strong>Vibranium</strong>
-                    <strong>Hennur</strong>
-                  </div>
-
-                  {[
-                    ["Area", "Whitefield", "Hennur"],
-                    ["Price", "₹24L – 36L", "₹58L – 81L"],
-                    ["Stage", "Upcoming", "Ready"],
-                    ["Type", "Apartment", "Apartment"],
-                  ].map((row) => (
-                    <div className="compare-row" key={row[0]}>
-                      {row.map((value, i) => (
-                        <span key={i}>{value}</span>
-                      ))}
+                      <b>{project.price}</b>
                     </div>
                   ))}
                 </div>
+              )}
 
-                <p className="phone-note">
-                  Hennur Courtyard is a design sample.
-                </p>
-              </div>
-            )}
+              {active === 1 && (
+                <div className="phone-content">
+                  <h3>Compare</h3>
+                  <p className="phone-subtitle">
+                    On your phone only
+                  </p>
 
-            {active === 2 && (
-              <div className="phone-content">
-                <h3>Lock the price</h3>
-                <p className="phone-subtitle">
-                  Vibranium Realty
-                </p>
+                  <div className="compare-table">
+                    <div className="compare-row">
+                      <span />
+                      <strong>Vibranium</strong>
+                      <strong>Hennur</strong>
+                    </div>
 
-                <div className="price-card">
-                  <span>Price you saw</span>
-                  <h2>₹24,00,000</h2>
-
-                  <div className="price-row">
-                    <span>Phone required</span>
-                    <strong>No</strong>
+                    {[
+                      ["Area", "Whitefield", "Hennur"],
+                      ["Price", "₹24L – 36L", "₹58L – 81L"],
+                      ["Stage", "Upcoming", "Ready"],
+                      ["Type", "Apartment", "Apartment"],
+                    ].map((row) => (
+                      <div className="compare-row" key={row[0]}>
+                        {row.map((value, i) => (
+                          <span key={i}>{value}</span>
+                        ))}
+                      </div>
+                    ))}
                   </div>
 
-                  <div className="price-row">
-                    <span>Shared with builder</span>
-                    <strong>Nothing</strong>
-                  </div>
+                  <p className="phone-note">
+                    Hennur Courtyard is a design sample.
+                  </p>
                 </div>
+              )}
 
-                <p className="phone-note">
-                  Illustrative amount.
-                </p>
-              </div>
-            )}
+              {active === 2 && (
+                <div className="phone-content">
+                  <h3>Lock the price</h3>
+                  <p className="phone-subtitle">
+                    Vibranium Realty
+                  </p>
+
+                  <div className="price-card">
+                    <span>Price you saw</span>
+                    <h2>₹24,00,000</h2>
+
+                    <div className="price-row">
+                      <span>Phone required</span>
+                      <strong>No</strong>
+                    </div>
+
+                    <div className="price-row">
+                      <span>Shared with builder</span>
+                      <strong>Nothing</strong>
+                    </div>
+                  </div>
+
+                  <p className="phone-note">
+                    Illustrative amount.
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-    </section>
+      {/* CENTERED PROPERTY SEARCH */}
+      <section className="property-search-section">
+        <div className="property-search-container">
+          <Page />
+        </div>
+      </section>
+
+    </main>
   );
 }

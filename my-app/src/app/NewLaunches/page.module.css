@@ -1,7 +1,7 @@
 
 .propertySection {
   padding: 50px 3%;
-  background-color:#201010;
+  background-color:#37050d;
 }
 
 .propertyHeading {
@@ -34,7 +34,7 @@
 }
 
 .propertyCard {
-  background: rgb(32, 16, 16);
+  background: rgba(58, 20, 28, 0.821);
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 5px 25px rgba(60, 37, 37, 0.07);

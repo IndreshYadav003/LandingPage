@@ -1,0 +1,569 @@
+
+.container {
+  width: 70%;
+  margin: 0 auto;
+  padding: 2px 1% 2px;
+  color: #172033;
+  overflow: hidden;
+  
+
+}
+
+.container *,
+.container *::before,
+.container *::after {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.heroSection {
+  position: relative;
+  min-height: 540px;
+  padding: 45px 5% 120px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(8, 13, 23, 0.96),
+      rgba(8, 13, 23, 0.72) 48%,
+      rgba(8, 13, 23, 0.12)
+    ),
+    url("/images/real-estate-banner.jpg");
+
+  background-position: center;
+  background-size: cover;
+
+  display: flex;
+  align-items: center;
+}
+
+.heroContent {
+  width: 100%;
+  max-width: 1320px;
+  margin: auto;
+}
+
+.heroContent h1 {
+  color: #fff;
+  font-size: clamp(35px, 5vw, 60px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 20px 0;
+}
+
+.heroContent h1 span {
+  color: #e50920;
+}
+
+.heroContent p {
+  color: #e5e7eb;
+  font-size: 20px;
+  margin-bottom: 35px;
+}
+
+/* =========================================
+   SEARCH BAR
+========================================= */
+
+.searchWrapper {
+  width: min(100%, 1100px);
+  margin: 0 auto 40px;
+}
+
+.searchBox {
+  position: relative;
+  z-index: 5;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+
+  padding: 16px;
+  background: #302a2a;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+.searchBox input {
+  width: 100%;
+  height: 56px;
+  min-width: 0;
+  padding: 0 62px 0 14px;
+
+  border: 1px solid #d9dee8;
+  border-radius: 11px;
+  outline: none;
+
+  background: #fff;
+  color: #344054;
+  font-size: 16px;
+}
+
+.searchBox input:focus {
+  border-color: #d10b20;
+  box-shadow: 0 0 0 3px rgba(209, 11, 32, 0.08);
+}
+
+.searchBox input::placeholder {
+  color: #858b98;
+}
+
+.searchButton {
+  height: 56px;
+  padding: 0 32px;
+
+  border: none;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #ed1028, #bd0018);
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.searchButton:hover {
+  background: #a90016;
+}
+
+/* =========================================
+   FILTER ICON (inside search box)
+========================================= */
+
+.searchField {
+  position: relative;
+  min-width: 0;
+}
+
+/* hide the browser's built-in clear (x) so it doesn't clash with the icon */
+.searchBox input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.filterButton {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+  padding: 0;
+
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #475467;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.filterButton svg {
+  width: 22px;
+  height: 22px;
+}
+
+.filterButton:hover,
+.filterButton[aria-expanded='true'] {
+  background: #fdecee;
+  color: #d10b20;
+}
+
+.filterBadge {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+
+  border-radius: 9px;
+  background: #d10b20;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* =========================================
+   FILTER PANEL
+========================================= */
+
+.filterPanel {
+  position: relative;
+  z-index: 4;
+
+  margin-top: 12px;
+  padding: 24px;
+
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.filterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.filterHeader h3 {
+  color: #172033;
+  font-size: 21px;
+  font-weight: 750;
+  margin: 0;
+}
+
+.resetButton {
+  border: none;
+  background: transparent;
+  color: #d10b20;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.resetButton:hover {
+  color: #920012;
+}
+
+/* FILTER GRID */
+
+.filterGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.filterGroup label {
+  color: #344054;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.filterGroup input,
+.filterGroup select {
+  width: 100%;
+  height: 49px;
+  padding: 0 13px;
+
+  border: 1px solid #d9dee8;
+  border-radius: 11px;
+
+  outline: none;
+  background: white;
+  color: #344054;
+  font-size: 14px;
+}
+
+.filterGroup input:focus,
+.filterGroup select:focus {
+  border-color: #d10b20;
+  box-shadow: 0 0 0 3px rgba(209, 11, 32, 0.08);
+}
+
+/* APPLY FILTER */
+
+.applyFilterButton {
+  width: 100%;
+  height: 52px;
+  margin-top: 25px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(90deg, #ed1028, #bd0018);
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.applyFilterButton:hover {
+  background: #a90016;
+}
+
+/* =========================================
+   RESULTS HEADER
+========================================= */
+
+.resultHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 25px;
+}
+
+.resultHeader span {
+  color: #172033;
+  font-size: 20px;
+  font-weight: 750;
+}
+
+/* =========================================
+   PROPERTY GRID
+========================================= */
+
+.propertyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.propertyCard {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e9eaf0;
+  border-radius: 17px;
+
+  box-shadow: 0 5px 22px rgba(16, 24, 40, 0.06);
+  transition: 0.3s ease;
+}
+
+.propertyCard:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 15px 35px rgba(16, 24, 40, 0.13);
+}
+
+.propertyImage {
+  position: relative;
+  height: 235px;
+  overflow: hidden;
+  background: #e9edf2;
+}
+
+.propertyImage img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+.propertyCard:hover .propertyImage img {
+  transform: scale(1.07);
+}
+
+/* PROPERTY BADGES */
+
+.propertyType {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+
+  padding: 8px 15px;
+  background: #fff;
+  color: #172033;
+
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.propertyStatus {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  padding: 8px 13px;
+  background: #172033;
+  color: #fff;
+
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* PROPERTY CONTENT */
+
+.propertyContent {
+  padding: 22px;
+}
+
+.propertyContent h2 {
+  margin: 0 0 12px;
+  color: #151923;
+  font-size: 21px;
+  font-weight: 750;
+}
+
+.location {
+  margin: 0 0 10px;
+  color: #d10b20;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.propertyContent .price {
+  margin: 0 0 18px;
+  color: #c90820;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.propertyDetails {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  padding: 17px 0;
+  border-top: 1px solid #edf0f3;
+  border-bottom: 1px solid #edf0f3;
+
+  color: #667085;
+  font-size: 13px;
+}
+
+.viewButton {
+  width: 100%;
+  height: 47px;
+  margin-top: 18px;
+
+  border: 1px solid #172033;
+  border-radius: 10px;
+
+  background: #172033;
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.viewButton:hover {
+  background: #d10b20;
+  border-color: #d10b20;
+}
+
+/* ERROR AND EMPTY RESULTS */
+
+.error,
+.noResults {
+  padding: 35px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #fff;
+  text-align: center;
+}
+
+.error {
+  color: #b42318;
+}
+
+.noResults h3 {
+  color: #172033;
+  margin-bottom: 10px;
+}
+
+.noResults p {
+  color: #667085;
+}
+
+/* =========================================
+   TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 1050px) {
+  .filterGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .propertyGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 650px) {
+  .heroSection {
+    min-height: 480px;
+    padding: 40px 18px 75px;
+    background-position: center;
+  }
+
+  .heroContent h1 {
+    font-size: 34px;
+  }
+
+  .heroContent p {
+    font-size: 15px;
+  }
+
+  .searchBox {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+
+  .searchBox input {
+    height: 52px;
+  }
+
+  .filterPanel {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .filterGrid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .filterHeader h3 {
+    font-size: 17px;
+  }
+
+  .propertyGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .propertyImage {
+    height: 225px;
+  }
+
+  .propertyContent {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 400px) {
+  .filterHeader {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .propertyDetails {
+    justify-content: flex-start;
+    gap: 15px;
+  }
+}

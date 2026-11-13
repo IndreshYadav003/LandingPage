@@ -1,6 +1,6 @@
 
 import styles from "./page.module.css";
-
+import PropertySearch from "../propertySearch/page";
 // 1. Define TypeScript type
 type Property = {
   id: number;
@@ -88,8 +88,9 @@ export default function Page() {
 
   // 3. Return JSX
   return (
+    
     <section className={styles.propertySection}>
-
+      <PropertySearch />
       <div className={styles.propertyHeading}>
         <span>HANDPICKED</span>
         <h1>Featured Projects</h1>
