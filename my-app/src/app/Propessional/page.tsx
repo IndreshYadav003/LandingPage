@@ -73,7 +73,7 @@ export default function ProfessionalPage() {
           <p className="carousel-description">
             {slide.description}
           </p>
-
+    <Page/>
           {/* SLIDER INDICATORS */}
           <div className="carousel-indicators">
             {slides.map((item, index) => (
@@ -87,7 +87,6 @@ export default function ProfessionalPage() {
             ))}
           </div>
         </div>
-
         {/* RIGHT PHONE MOCKUP */}
         <div className="carousel-right">
           <div className="phone">
@@ -183,14 +182,6 @@ export default function ProfessionalPage() {
           </div>
         </div>
       </section>
-
-      {/* CENTERED PROPERTY SEARCH */}
-      <section className="property-search-section">
-        <div className="property-search-container">
-          <Page />
-        </div>
-      </section>
-
     </main>
   );
 }

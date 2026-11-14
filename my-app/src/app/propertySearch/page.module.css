@@ -1,11 +1,9 @@
 
 .container {
-  width: 70%;
   margin: 0 auto;
-  padding: 2px 1% 2px;
+  padding: 30px 1% 30px;
   color: #172033;
   overflow: hidden;
-  
 
 }
 
@@ -15,10 +13,6 @@
   box-sizing: border-box;
 }
 
-/* =========================================
-   HERO SECTION
-========================================= */
-
 .heroSection {
   position: relative;
   min-height: 540px;
@@ -27,7 +21,7 @@
   background:
     linear-gradient(
       90deg,
-      rgba(8, 13, 23, 0.96),
+      rgba(1, 10, 28, 0.96),
       rgba(8, 13, 23, 0.72) 48%,
       rgba(8, 13, 23, 0.12)
     ),
@@ -82,8 +76,8 @@
   align-items: center;
   gap: 12px;
 
-  padding: 16px;
-  background: #302a2a;
+  padding: 5px;
+  background: #0a0909;
   border: 1px solid #e5e7eb;
   border-radius: 20px;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
@@ -115,13 +109,11 @@
 
 .searchButton {
   height: 56px;
-  padding: 0 32px;
-
+  padding: 0 15px;
   border: none;
   border-radius: 11px;
   background: linear-gradient(135deg, #ed1028, #bd0018);
   color: #fff;
-
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;

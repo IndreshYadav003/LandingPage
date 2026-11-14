@@ -1,7 +1,10 @@
-
 .propertySection {
   padding: 50px 3%;
-  background-color:#37050d;
+  background: linear-gradient(
+  to right,
+  #000000 50% ,
+  #A52A35 100%
+);
 }
 
 .propertyHeading {

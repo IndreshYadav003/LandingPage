@@ -7,31 +7,14 @@
 
 .carousel-section {
   width: 100%;
-  min-height: 650px;
+  min-height: 600px;
   height: calc(100vh - 105px);
   max-height: 80px;
   position: relative;
   overflow: hidden;
-
   display: flex;
   align-items: center;
-/*
-  background: radial-gradient(
-    ellipse at 75% 75%,
-    #100f10,
-    #16100c 55%,
-    #ca0606
-  );
-*/
-/*Dark Luxury Red
- background: linear-gradient(
-  110deg,
-  #090909 0%,
-  #350D13 50%,
-  #9B111E 100%
-);*/
-/* Premium burgundy*/
-background: linear-gradient(
+  background: linear-gradient(
   110deg,
   #170B0D,
   #54121C 50%,
@@ -46,6 +29,7 @@ background: linear-gradient(
 
 .carousel-left {
   width: 60%;
+  margin-left: 70px ;
   padding: 40px 32px;
   z-index: 2;
   animation: slideFade 0.6s ease;
@@ -107,15 +91,16 @@ background: linear-gradient(
 .carousel-right {
   position: absolute;
   right: 14%;
-  top: 50%;
+  top: 46%;
   transform: translateY(-50%);
   animation: phoneFade 0.6s ease;
 }
 
 .phone {
-  width: 320px;
-  height: 700px;
-  padding: 9px;
+  margin: 2px;
+  width: 275px;
+  height: 540px;
+  padding: 2px;
   border: 7px solid #252c37;
   border-radius: 52px;
   background: #080a0e;
