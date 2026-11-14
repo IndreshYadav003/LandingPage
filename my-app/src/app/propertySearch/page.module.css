@@ -1,7 +1,9 @@
 
 .container {
-  margin: 0 auto;
-  padding: 30px 1% 30px;
+  margin: 50px;
+  margin-right:20px;
+  position: absolute;
+  padding: 2px 1% 2px;
   color: #172033;
   overflow: hidden;
 
@@ -14,7 +16,7 @@
 }
 
 .heroSection {
-  position: relative;
+  position: absolute;
   min-height: 540px;
   padding: 45px 5% 120px;
 

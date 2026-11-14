@@ -1,5 +1,4 @@
 import styles from "./page.module.css";
-
 // 1. Define TypeScript type
 type Property = {
   id: number;
