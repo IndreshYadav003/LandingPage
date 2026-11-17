@@ -1,6 +1,6 @@
 
 "use client";
-
+import { useRouter } from "next/navigation";
 import { useSyncExternalStore } from "react";
 import Link from "next/link";
 import "./Footer.css";
@@ -11,7 +11,11 @@ export default function Footer() {
     () => new Date().getFullYear(),
     () => 0,
   );
+const router = useRouter();
 
+  const handleOrder = () => {
+    router.push('/NewLaunches');
+  };
   return (
     <footer className="footer">
 
@@ -29,9 +33,9 @@ export default function Footer() {
             opportunities and make better property decisions.
           </p>
 
-          <Link href="/propertySearch" className="footer-cta">
+          <button className="footer-cta" onClick={handleOrder}>
             Explore Properties <span>↗</span>
-          </Link>
+          </button>
         </div>
 
         {/* Explore Links */}

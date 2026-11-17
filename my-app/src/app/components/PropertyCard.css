@@ -1,0 +1,644 @@
+
+/* -------------------- Main Card -------------------- */
+
+.property-card {
+  --pc-red: #d83232;
+  --pc-dark: #171717;
+  --pc-muted: #a5a5a5;
+
+  width: 100%;
+  max-width: 440px;
+  height: 680px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  color: #fff;
+  background: #191919;
+  border: 1px solid #353535;
+  border-radius: 18px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+}
+
+.property-card *,
+.property-card *::before,
+.property-card *::after {
+  box-sizing: border-box;
+}
+
+.pc-content {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.pc-page {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  animation: pcFade 0.25s ease;
+}
+
+@keyframes pcFade {
+  from {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* -------------------- Image Slider -------------------- */
+
+.pc-image-wrapper {
+  position: relative;
+  flex: none;
+}
+
+.pc-slider {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  background: #292929;
+  touch-action: pan-y;
+}
+
+.pc-detail-slider {
+  height: 190px;
+  flex: none;
+}
+
+.pc-slider-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+.pc-slider-track img {
+  display: block;
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pc-no-image {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: #aaa;
+  background: linear-gradient(135deg, #292929, #171717);
+}
+
+.pc-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+
+  color: #222;
+  background: rgba(255, 255, 255, 0.92);
+  border: none;
+  border-radius: 50%;
+
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.pc-arrow:hover {
+  color: #fff;
+  background: var(--pc-red);
+}
+
+.pc-prev {
+  left: 12px;
+}
+
+.pc-next {
+  right: 12px;
+}
+
+.pc-slider-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transform: translateX(-50%);
+}
+
+.pc-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+.pc-dot.active {
+  width: 20px;
+  background: #fff;
+}
+
+.pc-image-count {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  padding: 4px 9px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: 20px;
+  font-size: 11px;
+}
+
+/* -------------------- Status Badges -------------------- */
+
+.pc-status-row {
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  right: 13px;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  pointer-events: none;
+}
+
+.pc-status {
+  max-width: 48%;
+  overflow: hidden;
+  padding: 6px 11px;
+
+  color: #fff;
+  background: #247b4b;
+  border-radius: 30px;
+
+  font-size: 11px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pc-status-red {
+  background: #d83232;
+}
+
+/* -------------------- Overview -------------------- */
+
+.pc-overview-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 17px;
+}
+
+.pc-name {
+  margin: 0;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 750;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.pc-location {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin-top: 9px;
+
+  color: #aaa;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.pc-location svg {
+  flex: none;
+  color: var(--pc-red);
+}
+
+/* -------------------- Overview Information Boxes -------------------- */
+
+.pc-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+  margin-top: 24px;
+}
+
+.pc-info-box {
+  min-width: 0;
+  min-height: 66px;
+  padding: 12px;
+
+  background: #242424;
+  border: 1px solid #383838;
+  border-radius: 11px;
+}
+
+.pc-info-box span {
+  display: block;
+  margin-bottom: 6px;
+  color: #aaa;
+  font-size: 11px;
+}
+
+.pc-info-box strong {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.pc-info-wide {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #351818, #242424);
+  border-color: #793030;
+}
+
+.pc-info-wide span {
+  color: #f08080;
+}
+
+/* -------------------- Price -------------------- */
+
+.pc-price {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 14px;
+
+  border-top: 1px solid #383838;
+}
+
+.pc-price span {
+  color: #aaa;
+  font-size: 12px;
+}
+
+.pc-price strong {
+  color: #ff5555;
+  font-size: 24px;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+/* -------------------- Details Page -------------------- */
+
+.pc-details-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 17px;
+  scrollbar-width: thin;
+  scrollbar-color: #555 #202020;
+}
+
+.pc-section-title {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: 19px;
+  font-weight: 750;
+}
+
+.pc-description {
+  margin: 0 0 16px;
+  color: #b7b7b7;
+  font-size: 13px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.pc-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.pc-fact {
+  min-width: 0;
+  padding: 11px;
+
+  background: #242424;
+  border: 1px solid #383838;
+  border-radius: 9px;
+}
+
+.pc-wide {
+  grid-column: 1 / -1;
+}
+
+.pc-fact-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #999;
+  font-size: 11px;
+}
+
+.pc-fact-value {
+  display: block;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* -------------------- Brochure and Map Buttons -------------------- */
+
+.pc-extra-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.pc-outline-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 38px;
+  padding: 9px 14px;
+
+  color: #fff;
+  background: transparent;
+  border: 1px solid var(--pc-red);
+  border-radius: 8px;
+
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.pc-outline-button:hover {
+  background: var(--pc-red);
+}
+
+/* -------------------- Builder Page -------------------- */
+
+.pc-builder-page {
+  overflow-y: auto;
+}
+
+.pc-builder-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 17px;
+
+  background: linear-gradient(120deg, #381919, #202020);
+  border-bottom: 1px solid #4b2929;
+}
+
+.pc-builder-avatar {
+  width: 58px;
+  height: 58px;
+  flex: none;
+  display: grid;
+  place-items: center;
+
+  color: #fff;
+  background: linear-gradient(135deg, #e04444, #8d1919);
+  border-radius: 50%;
+
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.pc-builder-label {
+  color: #ff8585;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 1px;
+}
+
+.pc-builder-banner h2 {
+  margin: 5px 0;
+  color: #fff;
+  font-size: 19px;
+  overflow-wrap: anywhere;
+}
+
+.pc-builder-banner p {
+  margin: 0;
+  color: #aaa;
+  font-size: 12px;
+}
+
+.pc-builder-body {
+  padding: 17px;
+}
+
+.pc-builder-body h3 {
+  margin: 0 0 13px;
+  font-size: 17px;
+}
+
+.pc-builder-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin: 18px 0;
+}
+
+.pc-stat-box {
+  min-width: 0;
+  padding: 13px 7px;
+  text-align: center;
+
+  background: #252525;
+  border: 1px solid #3b3b3b;
+  border-radius: 10px;
+}
+
+.pc-stat-box strong {
+  display: block;
+  color: #ff6262;
+  font-size: 19px;
+  overflow-wrap: anywhere;
+}
+
+.pc-stat-box span {
+  display: block;
+  margin-top: 5px;
+  color: #aaa;
+  font-size: 10px;
+}
+
+.pc-builder-grid {
+  margin-top: 15px;
+}
+
+.pc-contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pc-contact-button {
+  flex: 1;
+  min-width: 110px;
+  padding: 12px 10px;
+
+  color: #fff;
+  background: #d83232;
+  border: 1px solid #d83232;
+  border-radius: 9px;
+
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 750;
+
+  transition: 0.2s ease;
+}
+
+.pc-contact-button:hover {
+  background: #a91f1f;
+  border-color: #a91f1f;
+}
+
+.pc-email-button {
+  color: #fff;
+  background: transparent;
+  border-color: #555;
+}
+
+.pc-email-button:hover {
+  background: #333;
+  border-color: #777;
+}
+
+.pc-builder-empty {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.pc-builder-empty h2 {
+  font-size: 20px;
+}
+
+.pc-builder-empty p {
+  color: #aaa;
+  font-size: 13px;
+}
+
+/* -------------------- Bottom Tabs -------------------- */
+
+.pc-tabs {
+  flex: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  background: #202020;
+  border-top: 1px solid #3b3b3b;
+}
+
+.pc-tab {
+  min-height: 52px;
+  padding: 12px 5px;
+
+  color: #aaa;
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid transparent;
+
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.pc-tab:hover {
+  color: #fff;
+  background: #292929;
+}
+
+.pc-tab.active {
+  color: #ff6262;
+  border-bottom-color: #e13a3a;
+}
+
+/* -------------------- Responsive Design -------------------- */
+
+@media (max-width: 480px) {
+  .property-card {
+    max-width: 100%;
+    height: 650px;
+    border-radius: 13px;
+  }
+
+  .pc-slider {
+    height: 225px;
+  }
+
+  .pc-detail-slider {
+    height: 165px;
+  }
+
+  .pc-overview-body {
+    padding: 14px;
+  }
+
+  .pc-name {
+    font-size: 20px;
+  }
+
+  .pc-overview-grid {
+    gap: 9px;
+    margin-top: 18px;
+  }
+
+  .pc-info-box {
+    padding: 10px;
+  }
+
+  .pc-price strong {
+    font-size: 21px;
+  }
+
+  .pc-details-body,
+  .pc-builder-body {
+    padding: 14px;
+  }
+
+  .pc-tab {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pc-page {
+    animation: none;
+  }
+
+  .pc-slider-track,
+  .pc-tab,
+  .pc-contact-button {
+    transition: none;
+  }
+}

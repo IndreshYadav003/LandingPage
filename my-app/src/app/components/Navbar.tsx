@@ -1,14 +1,52 @@
 
 "use client";
-
-import { useState } from "react";
+import LoginModal from "./LoginModal";
+import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import "./Navbar.css";
+
+const AUTH_CHANGE_EVENT = "auth-state-change";
+
+function subscribeToAuthChanges(callback: () => void) {
+  window.addEventListener("storage", callback);
+  window.addEventListener(AUTH_CHANGE_EVENT, callback);
+
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener(AUTH_CHANGE_EVENT, callback);
+  };
+}
+
+function getAuthSnapshot() {
+  return Boolean(window.localStorage.getItem("token"));
+}
+
+function getServerAuthSnapshot() {
+  return false;
+}
+
+function notifyAuthChanged() {
+  window.dispatchEvent(new Event(AUTH_CHANGE_EVENT));
+}
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const [showLogin, setShowLogin] = useState(false);
+  const isLoggedIn = useSyncExternalStore(
+    subscribeToAuthChanges,
+    getAuthSnapshot,
+    getServerAuthSnapshot
+  );
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    notifyAuthChanged();
+    setMenuOpen(false);
+    router.push("/");
+  };
 
   const navLinks = [
     { name: "Projects", path: "/Projects" },
@@ -53,7 +91,6 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-
           {/* Mobile Get App Button */}
           <Link
             href="/propertySearch"
@@ -69,6 +106,21 @@ const Navbar = () => {
           Get App
         </Link>
 
+        <button
+          className="auth-btn"
+          type="button"
+          onClick={() => {
+            if (isLoggedIn) {
+              handleLogout();
+            } else {
+              setMenuOpen(false);
+              setShowLogin(true);
+            }
+          }}
+        >
+          {isLoggedIn ? "Logout" : "Login"}
+        </button>
+
         {/* Mobile Menu */}
         <button
           className="menu-btn"
@@ -79,6 +131,17 @@ const Navbar = () => {
           {menuOpen ? "✕" : "☰"}
         </button>
       </nav>
+
+      <LoginModal
+        isOpen={showLogin}
+        onClose={() => setShowLogin(false)}
+        onLoginSuccess={() => {
+          notifyAuthChanged();
+          setShowLogin(false);
+          setMenuOpen(false);
+          router.push("/");
+        }}
+      />
     </>
   );
 };
