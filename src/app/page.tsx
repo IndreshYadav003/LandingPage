@@ -1,16 +1,16 @@
 import Professional from "./Propessional/page"
 import Different from "./Different/page"
-import NewLaunches from "./NewLaunches/page"
-import Project from "./Projects/page"
+import PapularProject from "./popularProject/page"
+import  AboutSection from "./components/Last" 
 import View from "./View/page"
 export default function Home() {
   return (
     <main>
     <Professional/>
-      <NewLaunches/>
-    <Project/>
+     <PapularProject/>
       <Different/>
       <View/>
+      <AboutSection/>
     </main>
   );
 }

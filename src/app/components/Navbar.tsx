@@ -1,14 +1,52 @@
 
 "use client";
-
-import { useState } from "react";
+import LoginModal from "./LoginModal";
+import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import "./Navbar.css";
+
+const AUTH_CHANGE_EVENT = "auth-state-change";
+
+function subscribeToAuthChanges(callback: () => void) {
+  window.addEventListener("storage", callback);
+  window.addEventListener(AUTH_CHANGE_EVENT, callback);
+
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener(AUTH_CHANGE_EVENT, callback);
+  };
+}
+
+function getAuthSnapshot() {
+  return Boolean(window.localStorage.getItem("token"));
+}
+
+function getServerAuthSnapshot() {
+  return false;
+}
+
+function notifyAuthChanged() {
+  window.dispatchEvent(new Event(AUTH_CHANGE_EVENT));
+}
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const [showLogin, setShowLogin] = useState(false);
+  const isLoggedIn = useSyncExternalStore(
+    subscribeToAuthChanges,
+    getAuthSnapshot,
+    getServerAuthSnapshot
+  );
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    notifyAuthChanged();
+    setMenuOpen(false);
+    router.push("/");
+  };
 
   const navLinks = [
     { name: "Projects", path: "/Projects" },
@@ -23,10 +61,9 @@ const Navbar = () => {
       {/* Upper Navbar */}
       <div className="top-navbar">
         <div className="top-navbar-content">
-          <Link href="/privacy">Privacy</Link>
           <span>No phone number on this site</span>
-          <Link href="/app" className="top-get-app">
-            Get the app
+          <Link href="/propertySearch" className="top-get-app">
+            Get App
           </Link>
         </div>
       </div>
@@ -54,21 +91,35 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-
           {/* Mobile Get App Button */}
           <Link
-            href="/app"
+            href="/propertySearch"
             className="mobile-get-app"
             onClick={() => setMenuOpen(false)}
           >
-            Get the app
+            Get App
           </Link>
         </div>
 
         {/* Desktop Get App Button */}
-        <Link href="/app" className="get-app-btn">
-          Get the app
+        <Link href="/propertySearch" className="get-app-btn">
+          Get App
         </Link>
+
+        <button
+          className="auth-btn"
+          type="button"
+          onClick={() => {
+            if (isLoggedIn) {
+              handleLogout();
+            } else {
+              setMenuOpen(false);
+              setShowLogin(true);
+            }
+          }}
+        >
+          {isLoggedIn ? "Logout" : "Login"}
+        </button>
 
         {/* Mobile Menu */}
         <button
@@ -80,6 +131,17 @@ const Navbar = () => {
           {menuOpen ? "✕" : "☰"}
         </button>
       </nav>
+
+      <LoginModal
+        isOpen={showLogin}
+        onClose={() => setShowLogin(false)}
+        onLoginSuccess={() => {
+          notifyAuthChanged();
+          setShowLogin(false);
+          setMenuOpen(false);
+          router.push("/");
+        }}
+      />
     </>
   );
 };

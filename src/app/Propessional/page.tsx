@@ -1,25 +1,37 @@
-
 "use client";
-
 import { useEffect, useState } from "react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ShieldCheck,
+  Pause,
+  Play,
+} from "lucide-react";
+import { useRouter } from "next/navigation";
 import "./page.css";
 
 const slides = [
   {
     number: "01",
     label: "LOOK",
-    heading: "Browse with",
-    highlight: "no number.",
+    heading: "Explore with",
+    highlight: "private ID.",
     description:
-      "Open any of the six projects. Price band, stage and area are right there. No form appears before the facts do.",
+      "Explore projects and connect with developers securely using your private ID, not your phone number.",
+    tag: "PRIVATE PROPERTY DISCOVERY",
+    phoneTitle: "Discover properties",
+    phoneDescription: "Find projects that match your lifestyle.",
   },
   {
     number: "02",
-    label: "COMPARE",
-    heading: "Put them",
-    highlight: "side by side.",
+    label: "COMPARE WITH AI",
+    heading: "Compare smarter.",
+    highlight: "Choose better.",
     description:
-      "Pick two or three. Price, stage and type line up on your screen. Nothing is sent to a builder.",
+      "Compare properties side by side. Understand pricing, location, amenities and important project details.",
+    tag: "SMART PROPERTY COMPARISON",
+    phoneTitle: "Compare projects",
+    phoneDescription: "See the important differences clearly.",
   },
   {
     number: "03",
@@ -27,157 +39,265 @@ const slides = [
     heading: "Hold the price",
     highlight: "you saw.",
     description:
-      "In the app, lock today's price while you decide. Your number stays optional and is never passed on.",
+      "Keep track of the price you viewed while you take your time to make a confident property decision.",
+    tag: "PRICE TRANSPARENCY",
+    phoneTitle: "Your price is saved",
+    phoneDescription: "Review your selected property with confidence.",
   },
 ];
 
 const projects = [
-  { name: "Vibranium", location: "Whitefield", price: "₹24L+" },
-  { name: "Trifecta Veranza", location: "Bengaluru", price: "₹1.1Cr+" },
-  { name: "Sarjapur Greenline", location: "Sarjapur Road", price: "₹72L+" },
-  { name: "Hennur Courtyard", location: "Hennur", price: "₹58L+" },
-  { name: "Budigere Rise", location: "Budigere", price: "₹46L+" },
+  {
+    name: "Vibranium",
+    location: "Whitefield, Bengaluru",
+    price: "₹85 L onwards",
+    image: "🏙️",
+  },
+  {
+    name: "Trifecta Veranza",
+    location: "Sarjapur Road, Bengaluru",
+    price: "₹1.2 Cr onwards",
+    image: "🏢",
+  },
 ];
 
 export default function ProfessionalPage() {
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(true);
+const router = useRouter();
+
+  const handleOrder = () => {
+    router.push('/NewLaunches');
+  };
+  const nextSlide = () => {
+    setActive((current) => (current + 1) % slides.length);
+  };
+
+  const previousSlide = () => {
+    setActive(
+      (current) => (current - 1 + slides.length) % slides.length
+    );
+  };
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActive((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    if (paused) return;
 
-    return () => clearInterval(timer);
-  }, []);
+    const timer = window.setInterval(() => {
+      setActive((current) => (current + 1) % slides.length);
+    }, 3000);
 
-  const slide = slides[active];
+    return () => window.clearInterval(timer);
+  }, [paused]);
+
+  const currentSlide = slides[active];
 
   return (
-    <section className="carousel-section">
+    <main className="professional-page">
+      {/* HERO / CAROUSEL */}
+      <section
+        className="carousel-section"
+        onMouseEnter={() => setPaused(false)}
+        onMouseLeave={() => setPaused(true)}
+      >
+        <div className="hero-background-circle circle-one" />
+        <div className="hero-background-circle circle-two" />
 
-      {/* LEFT CONTENT */}
-      <div className="carousel-left" key={active}>
-        <p className="carousel-label">
-          {slide.number} · {slide.label}
-        </p>
+        <div className="hero-inner">
+          {/* LEFT CONTENT */}
+          <div className="carousel-left" key={currentSlide.number}>
+            <div className="trust-label">
+              <ShieldCheck size={17} />
+              <span>PROPERTY DISCOVERY, REIMAGINED</span>
+            </div>
 
-        <h1>
-          {slide.heading}{" "}
-          <span>{slide.highlight}</span>
-        </h1>
+            <p className="slide-label">
+              {currentSlide.number} / 03
+              <span />
+              {currentSlide.label}
+            </p>
 
-        <p className="carousel-description">
-          {slide.description}
-        </p>
+            <h1>
+              {currentSlide.heading}
+              <br />
+              <span>{currentSlide.highlight}</span>
+            </h1>
 
-        {/* SLIDER INDICATORS */}
-        <div className="carousel-indicators">
-          {slides.map((item, index) => (
-            <button
-              key={item.number}
-              onClick={() => setActive(index)}
-              className={active === index ? "active" : ""}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-      </div>
+            <p className="hero-description">
+              {currentSlide.description}
+            </p>
 
-      {/* RIGHT PHONE MOCKUP */}
-      <div className="carousel-right" key={`phone-${active}`}>
-        <div className="phone">
-          <div className="phone-screen">
-            <div className="phone-notch" />
+            <div className="hero-benefit">
+              <ShieldCheck size={18} />
+              <span>No unwanted calls. More clarity. Better decisions.</span>
+            </div>
 
-            {active === 0 && (
-              <div className="phone-content">
-                <h3>Open projects</h3>
-                <p className="phone-subtitle">
-                  Bengaluru · 6 open, no sign-up
-                </p>
-
-                {projects.map((project, index) => (
-                  <div className="project-card" key={project.name}>
-                    <div className={`project-image image-${index}`}>
-                      <span>{index + 1}</span>
-                    </div>
-
-                    <div className="project-info">
-                      <strong>{project.name}</strong>
-                      <p>{project.location}</p>
-                    </div>
-
-                    <b>{project.price}</b>
-                  </div>
+            {/* SLIDE CONTROLS */}
+            <div className="carousel-bottom">
+              <div className="carousel-indicators">
+                {slides.map((slide, index) => (
+                  <button
+                    key={slide.number}
+                    type="button"
+                    className={`indicator ${
+                      active === index ? "active" : ""
+                    }`}
+                    onClick={() => setActive(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                    aria-current={active === index ? "true" : undefined}
+                  />
                 ))}
               </div>
-            )}
+            <button className="viewButton"
+  onClick={handleOrder}
+  >
+  <span >
+    Explore Property
+    <span >
+      →
+    </span>
+  </span>
+</button>
+              <div className="carousel-buttons">
+                <button
+                  type="button"
+                  className="carousel-control"
+                  onClick={previousSlide}
+                  aria-label="Previous slide"
+                >
+                  <ArrowLeft size={19} />
+                </button>
 
-            {active === 1 && (
+                <button
+                  type="button"
+                  className="carousel-control"
+                  onClick={nextSlide}
+                  aria-label="Next slide"
+                >
+                  <ArrowRight size={19} />
+                </button>
+
+                <button
+                  type="button"
+                  className="carousel-control pause-control"
+                  onClick={() => setPaused((value) => !value)}
+                  aria-label={paused ? "Play slides" : "Pause slides"}
+                >
+                  {paused ? <Play size={17} /> : <Pause size={17} />}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT PHONE MOCKUP */}
+          <div className="carousel-right">
+            <div className="phone-glow" />
+
+            <div className="floating-tag">
+              <ShieldCheck size={16} />
+              <span>Smart property discovery</span>
+            </div>
+
+            <div className="phone">
+              <div className="phone-top">
+                <span className="phone-time">9:41</span>
+                <span className="phone-camera" />
+                <span className="phone-status">● ● ▰</span>
+              </div>
+
               <div className="phone-content">
-                <h3>Compare</h3>
-                <p className="phone-subtitle">
-                  On your phone only
-                </p>
-
-                <div className="compare-table">
-                  <div className="compare-row">
-                    <span />
-                    <strong>Vibranium</strong>
-                    <strong>Hennur</strong>
+                <div className="phone-header">
+                  <div>
+                    <p className="phone-small">WELCOME TO PROPSTOXX</p>
+                    <h3>{currentSlide.phoneTitle}</h3>
+                    <p>{currentSlide.phoneDescription}</p>
                   </div>
+                  <div className="phone-avatar">P</div>
+                </div>
 
-                  {[
-                    ["Area", "Whitefield", "Hennur"],
-                    ["Price", "₹24L – 36L", "₹58L – 81L"],
-                    ["Stage", "Upcoming", "Ready"],
-                    ["Type", "Apartment", "Apartment"],
-                  ].map((row) => (
-                    <div className="compare-row" key={row[0]}>
-                      {row.map((value, i) => (
-                        <span key={i}>{value}</span>
-                      ))}
+                {active === 0 && (
+                  <div className="phone-project-list">
+                    {projects.map((project) => (
+                      <div className="phone-project" key={project.name}>
+                        <div className="project-image">
+                          {project.image}
+                        </div>
+
+                        <div className="project-info">
+                          <h4>{project.name}</h4>
+                          <p>{project.location}</p>
+                          <strong>{project.price}</strong>
+                        </div>
+                      </div>
+                    ))}
+
+                    <div className="phone-bottom-note">
+                      Explore projects with confidence.
                     </div>
-                  ))}
-                </div>
-
-                <p className="phone-note">
-                  Hennur Courtyard is a design sample.
-                </p>
-              </div>
-            )}
-
-            {active === 2 && (
-              <div className="phone-content">
-                <h3>Lock the price</h3>
-                <p className="phone-subtitle">
-                  Vibranium Realty
-                </p>
-
-                <div className="price-card">
-                  <span>Price you saw</span>
-                  <h2>₹24,00,000</h2>
-
-                  <div className="price-row">
-                    <span>Phone required</span>
-                    <strong>No</strong>
                   </div>
+                )}
 
-                  <div className="price-row">
-                    <span>Shared with builder</span>
-                    <strong>Nothing</strong>
+                {active === 1 && (
+                  <div className="compare-content">
+                    <div className="compare-heading">
+                      <span>PROJECT A</span>
+                      <span>PROJECT B</span>
+                    </div>
+
+                    {[
+                      ["₹85 L", "₹1.2 Cr"],
+                      ["Whitefield", "Sarjapur"],
+                      ["2 BHK", "3 BHK"],
+                      ["Ready", "Upcoming"],
+                    ].map((item, index) => (
+                      <div className="compare-row" key={index}>
+                        <span>{item[0]}</span>
+                        <span>{item[1]}</span>
+                      </div>
+                    ))}
+
+                    <div className="compare-footer">
+                      Compare what matters to you.
+                    </div>
                   </div>
-                </div>
+                )}
 
-                <p className="phone-note">
-                  Illustrative amount.
-                </p>
+                {active === 2 && (
+                  <div className="price-lock-content">
+                    <div className="lock-icon">
+                      <ShieldCheck size={32} />
+                    </div>
+
+                    <p className="lock-small">YOUR SELECTED PRICE</p>
+                    <h2>₹85,00,000</h2>
+                    <p className="lock-success">
+                      <ShieldCheck size={15} />
+                      Price saved for your review
+                    </p>
+
+                    <div className="lock-details">
+                      <span>Property</span>
+                      <strong>Vibranium</strong>
+                      <span>Location</span>
+                      <strong>Whitefield, Bengaluru</strong>
+                    </div>
+
+                    <div className="lock-button">
+                      View saved details
+                    </div>
+                  </div>
+                )}
               </div>
-            )}
+
+              <div className="phone-home-indicator" />
+            </div>
+
+            <div className="floating-caption">
+              <span className="caption-dot" />
+              {currentSlide.tag}
+            </div>
           </div>
         </div>
-      </div>
-
-    </section>
+      </section>
+    </main>
   );
 }

@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "src/app/service/projectApi.js"  ],
+, "src/app/service/projectApi.js", "src/app/popularProject/page.jsx", "src/app/lib/axios.js"  ],
   "exclude": ["node_modules"]
 }

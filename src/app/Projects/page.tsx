@@ -1,197 +1,82 @@
-
-import styles from "./page.module.css";
-
-// 1. Define TypeScript type
-type Property = {
-  id: number;
-  title: string;
-  location: string;
-  price: number;
-  bedrooms: number;
-  bathrooms: number;
-  area: number;
-  propertyType: string;
-  status: string;
-  image: string;
-};
-
+import PropertyCard from "../components/PropertyCard"
 export default function Page() {
 
-  // 2. Demo dataset
-  const properties: Property[] = [
+ const propertyData = {
+  id: "988f5dcb-aed7-4dcc-a720-a18f356d0c5f",
+  name: "Mantri Espana",
+  description: "Some awesome property",
+
+  minPrice: 14000000,
+  maxPrice: 30000000,
+
+  landAreaSqft: 80000,
+  status: "Pending approval",
+  projectStatus: "Upcoming",
+
+  totalFloors: 24,
+  projectType: "Bungalow",
+  numberOfUnits: 185,
+
+  city: "Bengaluru",
+  locality: "Bellandur",
+  subLocality: "",
+
+  segment: "Ultra-luxury",
+  constructionType: "Precast Concrete Construction",
+  developerCategory: "Luxury & High-End Developers",
+
+  location: {
+    lat: 12.9243,
+    lng: 77.6789
+  },
+
+  projectUnits: null,
+  address: "",
+
+  assets: [
     {
-      id: 1,
-      title: "Luxury Apartment",
-      location: "Whitefield, Bangalore",
-      price: 8500000,
-      bedrooms: 3,
-      bathrooms: 2,
-      area: 1450,
-      propertyType: "Apartment",
-      status: "For Sale",
-      image:
-        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9"
+      type: "project",
+      label: "Project photos",
+      url: "https://storage.googleapis.com/property-artifacts/property/988f5dcb-aed7-4dcc-a720-a18f356d0c5f/image/mantri-espana-bangalore.jpg"
     },
     {
-      id: 2,
-      title: "Modern Villa",
-      location: "Sarjapur, Bangalore",
-      price: 15000000,
-      bedrooms: 4,
-      bathrooms: 3,
-      area: 2400,
-      propertyType: "Villa",
-      status: "For Sale",
-      image:
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+      type: "project",
+      label: "Project photos",
+      url: "https://storage.googleapis.com/property-artifacts/property/988f5dcb-aed7-4dcc-a720-a18f356d0c5f/image/mantri-espana.jpg"
     },
     {
-      id: 3,
-      title: "Affordable 2BHK",
-      location: "Electronic City, Bangalore",
-      price: 5500000,
-      bedrooms: 2,
-      bathrooms: 2,
-      area: 1100,
-      propertyType: "Apartment",
-      status: "For Rent",
-      image:
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c"
-    },
-    {
-      id: 4,
-      title: "Premium Penthouse",
-      location: "Indiranagar, Bangalore",
-      price: 22000000,
-      bedrooms: 4,
-      bathrooms: 4,
-      area: 3000,
-      propertyType: "Penthouse",
-      status: "For Sale",
-      image:
-        "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea"
-    },
-    {
-      id: 5,
-      title: "Compact Studio",
-      location: "Marathahalli, Bangalore",
-      price: 3500000,
-      bedrooms: 1,
-      bathrooms: 1,
-      area: 650,
-      propertyType: "Studio",
-      status: "For Rent",
-      image:
-        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0"
+      type: "documents",
+      label: "Documents",
+      url: "https://storage.googleapis.com/property-artifacts/property/988f5dcb-aed7-4dcc-a720-a18f356d0c5f/image/brochure_compressed.pdf"
     }
-  ];
+  ],
 
-  // 3. Return JSX
+  builder: {
+    id: "06b08357-42b8-4caf-a531-39f71fc1444d",
+    createdAt: "2025-04-05T10:13:05.253135Z",
+    updatedAt: "2025-04-05T10:13:05.253135Z",
+
+    name: "Lazy Developer",
+    email: "info@lazy.dev",
+    status: "active",
+    phone: "7338305986",
+
+    corporateAddress: "HSR Layout, Bengaluru 560102",
+
+    citiesAvailable: ["Bengaluru"],
+
+    completedProjects: 25,
+    ongoingProjects: 10,
+    totalProjects: 35,
+
+    description:
+      "A leading real estate developer in Bangalore, Lazy Developer specializes in residential and commercial projects that combine modern design with sustainable practices. Known for timely delivery and high-quality construction, the developer has built a strong reputation across the city's prime locations. With a focus on customer satisfaction and innovation, they continue to shape Bangalore’s urban landscape."
+  },
+
+  rtbEnabled: true
+};
+
   return (
-    <section className={styles.propertySection}>
-
-      <div className={styles.propertyHeading}>
-        <span>HANDPICKED</span>
-        <h1>Featured Projects</h1>
-        <p>The price is on the card. Four of these are marked design samples.</p>
-      </div>
-
-      <div className={styles.propertyGrid}>
-
-        {properties.map((property) => (
-          <div className={styles.propertyCard} key={property.id}>
-
-            <div className={styles.propertyImage}>
-              <img
-                src={property.image}
-                alt={property.title}
-              />
-
-              <span className={styles.propertyType}>
-                {property.propertyType}
-              </span>
-
-              <span className={styles.propertyStatus}>
-                {property.status}
-              </span>
-            </div>
-
-            <div className={styles.propertyContent}>
-
-              <p className={styles.location}>
-                📍 {property.location}
-              </p>
-             <h2>{property.title}</h2>
-              <h3>
-  ₹{(property.price < 10000000 
-    ? property.price / 100000 
-    : property.price / 10000000
-  ).toLocaleString('en-IN', { maximumFractionDigits: 2 })}{' '}
-  {property.price < 10000000 ? 'Lakhs' : 'Crores'}
-</h3>
-
-
-              <div className={styles.propertyDetails}>
-                <span>🛏 {property.bedrooms} Beds</span>
-                <span>🚿 {property.bathrooms} Baths</span>
-                <span>📐 {property.area} Sq.ft</span>
-              </div>
-
-              <button className={styles.viewButton}>
-                View Details →
-              </button>
-
-            </div>
-          </div>
-        ))}
-
-      </div>
-    </section>
-  );
+    <><PropertyCard property={propertyData}/></>
+  )
 }
-
-
-// "use client";
-
-// import axios from "axios";
-// import { useEffect, useState } from "react";
-
-// export default function Page() {
-//   const [properties, setProperties] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     const getProperties = async () => {
-//       try {
-//         const response = await axios.get(
-//           "https://databasesample.com/mock/property-listings/properties"
-//         );
-
-//         setProperties(response.data);
-//       } catch (error) {
-//         console.error("API Error:", error);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     getProperties();
-//   }, []);
-
-//   if (loading) return <h2>Loading...</h2>;
-
-//   return (
-//     <div>
-//       {properties.map((property) => (
-//         <div key={property.id} style={{borderBlockStartWidth:"4px",
-//         backgroundColor:"lightgray",display:"block",textJustify:"center",
-//         }} >
-//           <h2>{property.address}</h2>
-//           <p>{property.property_type}</p>
-//           <p>Bedrooms: {property.bedrooms}</p>
-//           <p>Bathrooms: {property.bathrooms}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }

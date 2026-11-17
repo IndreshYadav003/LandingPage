@@ -4,16 +4,12 @@
   margin: 0;
   padding: 0;
 }
-
-/* Top Navbar */
-
 .top-navbar {
   position: sticky;
   top: 0;
   width: 100%;
-  height: 36px;
+  height: 25px;
   padding: 0 8%;
-
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -50,20 +46,17 @@
 
 .navbar {
   position: sticky;
-  top: 36px;
-
+  top: 22px;
   width: 100%;
-  height: 75px;
+  height: 65px;
   padding: 0 8%;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  background-color: white;
-  color: black;
-
+  background-color: #ffffff;
+  color: #111827;
   z-index: 1001;
+  box-shadow: 0 1px 0 rgba(17, 24, 39, 0.08);
 }
 
 /* Logo */
@@ -72,10 +65,9 @@
   display: flex;
   align-items: center;
   gap: 10px;
-
   font-size: 26px;
   font-weight: 700;
-  color: black;
+  color: #d1193d;
   text-decoration: none;
 }
 
@@ -84,11 +76,9 @@
   width: 35px;
   height: 35px;
   border-radius: 10px;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   font-size: 20px;
 }
 
@@ -101,10 +91,10 @@
 }
 
 .nav-links a {
-  color: black;
+  color: #1f2937;
   text-decoration: none;
   font-size: 16px;
-  transition: color 0.3s;
+  transition: color 0.4s;
 }
 
 .nav-links a:hover,
@@ -117,21 +107,35 @@
 .get-app-btn,
 .mobile-get-app {
   padding: 10px 18px;
-
   border: 1px solid #ff354b;
   border-radius: 6px;
-
   background: #ff354b;
-  color: black;
-
+  color: white;
   font-weight: 600;
   text-decoration: none;
-
   transition: background-color 0.3s, border-color 0.3s;
 }
 
 .get-app-btn:hover,
 .mobile-get-app:hover {
+  border-color: #e5263c;
+  background: #e5263c;
+}
+
+.auth-btn {
+  padding: 10px 18px;
+  border: 1px solid #ff354b;
+  border-radius: 6px;
+  background: #ff354b;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.auth-btn:hover {
   border-color: #e5263c;
   background: #e5263c;
 }
@@ -144,13 +148,10 @@
 
 .menu-btn {
   display: none;
-
   background: transparent;
-  color: brown;
-
+  color: #111827;
   border: none;
   font-size: 28px;
-
   cursor: pointer;
 }
 
@@ -194,20 +195,15 @@
 
   .nav-links {
     display: none;
-
     position: absolute;
     top: 100%;
     left: 0;
-
     width: 100%;
     padding: 25px;
-
-    background-color: white;
-
+    background-color: black;
     flex-direction: column;
     align-items: center;
     gap: 25px;
-
     z-index: 1003;
 
     box-shadow: 0 8px 14px rgb(0 0 0 / 20%);

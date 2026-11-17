@@ -1,0 +1,234 @@
+
+.main {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 70px 8%;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 85% 50%,
+      rgba(181, 43, 43, 0.35),
+      transparent 35%
+    ),
+    linear-gradient(
+      110deg,
+      #171719 0%,
+      #242020 35%,
+      #541b1c 65%,
+      #922323 85%,
+      #b52b2b 100%
+    );
+}
+
+/* Main Content */
+
+.content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* Small Heading */
+
+.headingh {
+  display: inline-block;
+  margin-bottom: 18px;
+
+  color: #ff7777;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+
+/* Main Title */
+
+.Title {
+  margin: 0;
+
+  color: #ffffff;
+  font-size: clamp(36px, 5vw, 62px);
+  font-weight: 850;
+  line-height: 1.12;
+  letter-spacing: -2px;
+}
+
+.Title span {
+  color: #ff7777;
+}
+
+/* Description + Button Row */
+
+.descriptionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  gap: 30px;
+  margin-top: 15px;
+}
+
+/* Description */
+
+.Discription {
+  max-width: 550px;
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+/* View All Button */
+
+.viewButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 14px 25px;
+  color: #ffffff;
+  background: #b52b2b;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Button Hover */
+
+.viewButton:hover {
+  background: #d43838;
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Arrow Animation */
+
+.arrow {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.viewButton:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* Background Text */
+
+.backgroundText {
+  position: absolute;
+  right: -20px;
+  bottom: 15px;
+
+  color: rgba(255, 255, 255, 0.045);
+
+  font-size: clamp(65px, 12vw, 160px);
+  font-weight: 900;
+  letter-spacing: 8px;
+
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Tablet Responsive */
+
+@media (max-width: 768px) {
+  .main {
+    min-height: 360px;
+    padding: 60px 6%;
+  }
+
+  .Title {
+    letter-spacing: -1px;
+  }
+
+  .descriptionRow {
+    gap: 18px;
+  }
+
+  .Discription {
+    font-size: 14px;
+  }
+
+  .viewButton {
+    padding: 12px 17px;
+    font-size: 13px;
+  }
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 550px) {
+  .main {
+    min-height: 380px;
+    padding: 50px 22px;
+  }
+
+  .headingh {
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  .Title {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+
+  .descriptionRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    margin-top: 18px;
+  }
+
+  .Discription {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .viewButton {
+    align-self: flex-end;
+    padding: 12px 18px;
+  }
+
+  .backgroundText {
+    font-size: 65px;
+    right: -10px;
+  }
+}
+
+/* Small Mobile */
+
+@media (max-width: 360px) {
+  .Title {
+    font-size: 30px;
+  }
+
+  .main {
+    padding: 40px 18px;
+  }
+
+  .backgroundText {
+    font-size: 50px;
+  }
+}
