@@ -1,0 +1,33 @@
+
+.popular-projects {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.popular-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(100%, 340px), 1fr)
+  );
+  justify-items: center;
+  gap: 28px;
+}
+
+.project-error {
+  color: #d83232;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .popular-projects {
+    padding: 20px 12px;
+  }
+
+  .popular-projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
