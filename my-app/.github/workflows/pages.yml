@@ -31,11 +31,8 @@ jobs:
         run: npm ci
       - name: Build static site
         working-directory: my-app
-        run:
-          npm run build
-        env:
-          NEXT_PUBLIC_BASE_PATH: /LandingPage
-          NEXT_PUBLIC_API_BASE_URL:https://propstoxx-next-639395118020.asia-south1.run.app
+        run: npm run build
+        env:NEXT_PUBLIC_API_BASE_URL:https://propstoxx-next-639395118020.asia-south1.run.app;
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
