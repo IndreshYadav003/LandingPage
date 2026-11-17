@@ -1,10 +1,10 @@
 
 name: Deploy to GitHub Pages
+
 on:
   push:
     branches:
       - main
-
   workflow_dispatch:
 
 permissions:
@@ -21,11 +21,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Get latest GitHub code
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -33,20 +31,16 @@ jobs:
           cache: npm
           cache-dependency-path: my-app/my-app/package-lock.json
 
-      # Install packages
       - name: Install dependencies
         working-directory: my-app/my-app
         run: npm ci
 
-      # Build Next.js static website
       - name: Build static site
         working-directory: my-app/my-app
         run: npm run build
         env:
-          NEXT_PUBLIC_API_BASE_URL: "https://propstoxx-next-639395118020.asia-south1.run.app"
-          NEXT_PUBLIC_BASE_PATH: "/LandingPage"
+          NEXT_PUBLIC_API_BASE_URL: "https://propstoxx-next-639395118020.asia-south1"
 
-      # Upload generated website
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
@@ -61,6 +55,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
